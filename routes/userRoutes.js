@@ -7,4 +7,7 @@ router.get("/", userController.getAll);
 // Create a new user
 router.post("/", userController.createNew);
 
+// Update a user
+router.put("/:id", userController.update);
+
 module.exports = router;

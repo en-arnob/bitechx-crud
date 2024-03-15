@@ -13,3 +13,15 @@ exports.createNew = (req, res) => {
   users.push(newUser);
   res.status(201).json(newUser);
 };
+
+exports.update = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { username, password } = req.body;
+  const index = users.findIndex((user) => user.id === id);
+  if (index !== -1) {
+    users[index] = { id, username, password };
+    res.json(users[index]);
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
