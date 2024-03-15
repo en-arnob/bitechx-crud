@@ -10,4 +10,10 @@ router.post("/", userController.createNew);
 // Update a user
 router.put("/:id", userController.update);
 
+// Get a single user
+router.get("/:id", userController.getById);
+
+// Delete a user
+router.delete("/:id", userController.deleteUser);
+
 module.exports = router;

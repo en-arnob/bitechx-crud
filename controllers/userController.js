@@ -25,3 +25,24 @@ exports.update = (req, res) => {
     res.status(404).json({ message: "User not found" });
   }
 };
+
+exports.getById = (req, res) => {
+  const id = parseInt(req.params.id);
+  const user = users.find((user) => user.id === id);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
+
+exports.deleteUser = (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = users.findIndex((user) => user.id === id);
+  if (index !== -1) {
+    users.splice(index, 1);
+    res.json({ message: "User deleted successfully" });
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
