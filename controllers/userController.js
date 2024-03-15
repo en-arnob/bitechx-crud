@@ -6,3 +6,10 @@ let users = [
 exports.getAll = (req, res) => {
   res.json(users);
 };
+
+exports.createNew = (req, res) => {
+  const { username, password } = req.body;
+  const newUser = { id: users.length + 1, username, password };
+  users.push(newUser);
+  res.status(201).json(newUser);
+};
